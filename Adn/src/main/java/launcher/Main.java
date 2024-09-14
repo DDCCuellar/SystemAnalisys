@@ -98,12 +98,12 @@ public class Main {
         }
 
         try {
-            FileWriter writer = new FileWriter("src/dataset.dat"); // Ruta relativa al directorio del proyecto
+            FileWriter writer = new FileWriter("src/dataset.txt"); // Ruta relativa al directorio del proyecto
             for (String secuencia : BD) {
                 writer.write(secuencia + "\n");
             }
             writer.close();
-            System.out.println("Dataset guardado exitosamente en 'src/dataset.dat'");
+            System.out.println("Dataset guardado exitosamente en 'src/dataset.txt'");
         } catch (IOException e) {
             System.out.println("Error al guardar el archivo: " + e.getMessage());
         }
