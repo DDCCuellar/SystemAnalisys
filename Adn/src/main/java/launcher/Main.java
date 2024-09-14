@@ -8,7 +8,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
-    ArrayList<String> BD = new ArrayList<>();  // Almacenar las secuencias de ADN generadas
+    ArrayList<String> BD = new ArrayList<>();  // Store the DNA sequences generated
     Random rand = new Random();
     static String Ans="";
 
@@ -16,28 +16,28 @@ public class Main {
         Main main = new Main();
         Scanner sc=new Scanner(System.in);
         System.out.println("Ingrese # secuencias a generar");
-        int numSecuencias = sc.nextInt();  // Número de secuencias a generar
+        int numSecuencias = sc.nextInt();  // Number of sequences to generate
         System.out.println("Ingrese la longitud de las secuencias");
-        int longitudSecuencia = sc.nextInt();  // Longitud de cada secuencia de ADN
+        int longitudSecuencia = sc.nextInt();  // Length of each DNA sequence
         System.out.println("Ingrese la longitud del motif");
-        int longitudMotif = sc.nextInt();  // Longitud del motif
+        int longitudMotif = sc.nextInt();  // Length of motif
 
-        // Generar el dataset
+        // Generate the dataset
         main.FillerBD(numSecuencias, longitudSecuencia);
 
-        // Mostrar el dataset en consola
+        // Show dataset on console
         main.mostrarBD();
 
-        // Buscar el motif más frecuente
-        String motif = main.detectarMotif(longitudMotif);  // Buscar motifs de longitud dada
+        // Search the most frecuent motif
+        String motif = main.detectarMotif(longitudMotif);  // Search motifs of given lenght 
         Ans="Motif más frecuente: " + motif;
         System.out.println("Motif más frecuente: " + motif);
 
-        // Guardar el dataset en el archivo dataset.dat
+        //Save the dataset in the file dataset.txt
         main.guardarEnArchivo();
     }
 
-    // Generar una base de ADN de acuerdo a un número aleatorio
+    // Generate a base of DNA according to a random number
     public void GeneradorBN(int value, StringBuilder secuencia) {
         if (value < 25)
             secuencia.append("A");
@@ -49,7 +49,7 @@ public class Main {
             secuencia.append("T");
     }
 
-    // Llenar el ArrayList con secuencias de ADN aleatorias
+    // Fill the ArrayList with random DNA sequences
     public void FillerBD(int numSecuencias, int longitud) {
         for (int i = 0; i < numSecuencias; i++) {
             StringBuilder secuencia = new StringBuilder();
@@ -60,7 +60,7 @@ public class Main {
         }
     }
 
-    // Mostrar el contenido de la base de datos (BD) en consola
+    // Show the Daset in console
     public void mostrarBD() {
         System.out.println("Secuencias de ADN generadas:");
         for (String secuencia : BD) {
@@ -68,11 +68,11 @@ public class Main {
         }
     }
 
-    // Detectar el motif más frecuente utilizando un HashMap
+    // Detect the motif more frequent using HashMap
     public String detectarMotif(int longitudMotif) {
         HashMap<String, Integer> motifMap = new HashMap<>();
 
-        // Recorrer cada secuencia y extraer motifs
+        // Loop through each sequence and extract motifs
         for (String secuencia : BD) {
             for (int i = 0; i <= secuencia.length() - longitudMotif; i++) {
                 String motif = secuencia.substring(i, i + longitudMotif);
@@ -80,7 +80,7 @@ public class Main {
             }
         }
 
-        // Encontrar el motif más frecuente
+        // Find the more frequent motif
         String motifFrecuente = "";
         int maxFrecuencia = 0;
         for (String key : motifMap.keySet()) {
@@ -92,7 +92,7 @@ public class Main {
         return motifFrecuente;
     }
 
-    // Guardar el dataset generado en el archivo dataset.txt
+    // Save the dataset in the file dataset.txt
     public void guardarEnArchivo() {
         if (BD.isEmpty()) {
             System.out.println("No hay datos para guardar.");
@@ -100,7 +100,7 @@ public class Main {
         }
 
         try {
-            FileWriter writer = new FileWriter("src/dataset.txt"); // Ruta relativa al directorio del proyecto
+            FileWriter writer = new FileWriter("src/dataset.txt"); // Alternative route to the directory of the work
             for (String secuencia : BD) {
                 writer.write(secuencia + "\n");
             }
