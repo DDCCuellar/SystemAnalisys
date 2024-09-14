@@ -10,17 +10,39 @@ import java.util.Scanner;
 public class Main {
     ArrayList<String> BD = new ArrayList<>();  // Store the DNA sequences generated
     Random rand = new Random();
-    static String Ans="";
+    static String Ans = "";
+    static int motifFrecuencia = 0;  // Store the frequency of the motif
 
     public static void main(String[] args) {
         Main main = new Main();
-        Scanner sc=new Scanner(System.in);
-        System.out.println("Ingrese # secuencias a generar");
+        Scanner sc = new Scanner(System.in);
+
+        // Request sequence number
+        System.out.println("Enter the number of sequences: ");
         int numSecuencias = sc.nextInt();  // Number of sequences to generate
-        System.out.println("Ingrese la longitud de las secuencias");
+        if (numSecuencias < 1000 || numSecuencias > 2000000) {
+            System.out.println("the number of sequences must be integers between 1000 to 2000000.");
+            return;  // Terminate the program if the condition is not met
+        }
+
+        // Request length of sequences
+        System.out.println("Enter the size of the sequences: ");
         int longitudSecuencia = sc.nextInt();  // Length of each DNA sequence
-        System.out.println("Ingrese la longitud del motif");
+        if (longitudSecuencia < 5 || longitudSecuencia > 100) {
+            System.out.println("the size of sequences must be integers between 5 to 100");
+            return;  // Terminate the program if the condition is not met
+        }
+
+        // Request motif length
+        System.out.println("Enter the size of the motif: ");
         int longitudMotif = sc.nextInt();  // Length of motif
+        if (longitudMotif < 4 || longitudMotif > 10) {
+            System.out.println("the size of motif must be integers between 4 to 10");
+            return;  // Terminate the program if the condition is not met
+        }
+
+        // Start measuring time
+        long startTime = System.currentTimeMillis();
 
         // Generate the dataset
         main.FillerBD(numSecuencias, longitudSecuencia);
@@ -28,12 +50,18 @@ public class Main {
         // Show dataset on console
         main.mostrarBD();
 
-        // Search the most frecuent motif
-        String motif = main.detectarMotif(longitudMotif);  // Search motifs of given lenght 
-        Ans="Motif más frecuente: " + motif;
-        System.out.println("Motif más frecuente: " + motif);
+        // Search the most frequent motif
+        String motif = main.detectarMotif(longitudMotif);  // Search motifs of given length 
+        Ans = "Most frequent motif: " + motif;
+        System.out.println(Ans);
+        System.out.println("Frequency of the motif: " + motifFrecuencia);  // Show motif frequency
 
-        //Save the dataset in the file dataset.txt
+        // End measuring time
+        long endTime = System.currentTimeMillis();
+        long elapsedTime = endTime - startTime;  // Calculate the elapsed time
+        System.out.println("Time taken to find the motif: " + elapsedTime + " milliseconds");
+
+        // Save the dataset in the file dataset.txt
         main.guardarEnArchivo();
     }
 
@@ -60,18 +88,17 @@ public class Main {
         }
     }
 
-    // Show the Daset in console
+    // Show the dataset in console
     public void mostrarBD() {
-        System.out.println("Secuencias de ADN generadas:");
+        System.out.println("DNA sequences generated: ");
         for (String secuencia : BD) {
             System.out.println(secuencia);
         }
     }
 
-    // Detect the motif more frequent using HashMap
+    // Detect the most frequent motif using HashMap
     public String detectarMotif(int longitudMotif) {
         HashMap<String, Integer> motifMap = new HashMap<>();
-
         // Loop through each sequence and extract motifs
         for (String secuencia : BD) {
             for (int i = 0; i <= secuencia.length() - longitudMotif; i++) {
@@ -80,13 +107,13 @@ public class Main {
             }
         }
 
-        // Find the more frequent motif
+        // Find the most frequent motif
         String motifFrecuente = "";
-        int maxFrecuencia = 0;
+        motifFrecuencia = 0;
         for (String key : motifMap.keySet()) {
-            if (motifMap.get(key) > maxFrecuencia) {
+            if (motifMap.get(key) > motifFrecuencia) {
                 motifFrecuente = key;
-                maxFrecuencia = motifMap.get(key);
+                motifFrecuencia = motifMap.get(key);  // Store the frequency of the motif
             }
         }
         return motifFrecuente;
@@ -95,7 +122,7 @@ public class Main {
     // Save the dataset in the file dataset.txt
     public void guardarEnArchivo() {
         if (BD.isEmpty()) {
-            System.out.println("No hay datos para guardar.");
+            System.out.println("There is no data to save.");
             return;
         }
 
@@ -105,10 +132,12 @@ public class Main {
                 writer.write(secuencia + "\n");
             }
             writer.write(Ans + "\n");
+            writer.write("Frequency of the motif: " + motifFrecuencia + "\n");
             writer.close();
-            System.out.println("Dataset guardado exitosamente en 'src/dataset.txt'");
+            System.out.println("Data set successfully saved in 'src/dataset.txt'");
         } catch (IOException e) {
-            System.out.println("Error al guardar el archivo: " + e.getMessage());
+            System.out.println("Error saving file: " + e.getMessage());
         }
     }
 }
+        
