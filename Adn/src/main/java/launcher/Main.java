@@ -90,7 +90,7 @@ public class Main {
         return motifFrecuente;
     }
 
-    // Guardar el dataset generado en el archivo dataset.dat
+    // Guardar el dataset generado en el archivo dataset.txt
     public void guardarEnArchivo() {
         if (BD.isEmpty()) {
             System.out.println("No hay datos para guardar.");
