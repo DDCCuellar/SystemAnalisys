@@ -1,0 +1,57 @@
+{
+  "intents":[
+    {
+      "tag": "saludo",
+      "patterns": ["hola","buenos dias","buenas","saludos"],
+      "responses": ["Hola que tal?","Hola!","Buenos dias mi lord"]
+    },
+    {"tag": "nombre",
+      "patterns": ["cual es tu nombre?","como te llamas"],
+      "responses": ["Mi nombre es JhonRecipes","Me llamo JohnRecipes","Puedes llamarme Chatbot de recetas"]
+    },
+    {"tag": "Gastronomia Colombiana",
+      "patterns": ["que es la gastronomia colombiana?"],
+      "responses": ["La cocina colombiana es un buen ejemplo de multiculturalidad. Mezcla influencias indigenas, españolas y africanas.","Son los platos que la comunidad Colombiana prepara en su dia a dia"]
+    },
+    {"tag": "Platos Tradicionales",
+      "patterns": ["cuales son los platos tradicionales?","Me puedes dar un ejemplo de platos tradicionales colombianos?","Dime algun plato tradicional colombiano"],
+      "responses": ["Algunos de los platos mas tradicionales son: La bandeja paisa, El ajiaco, Sancocho, La lechona, Arroz con pollo","Algunos de los platos mas tradicionales son: Arroz con huevos, Tamal, Caldo de costilla, La Changua"]
+    },
+    {"tag": "Bandeja Paisa",
+      "patterns": ["que es la bandeja paisa?"],
+      "responses": ["Es un plato tipico de la región de Antioquia (Medellin) y se compone de carne de res, picadillo, chicharron, chorizo, frijoles negros, arroz, huevo frito, platanos, arepas, hogao y aguacate."]
+    },
+    {"tag": "Ajiaco",
+      "patterns": ["que es el ajiaco?"],
+      "responses": ["Es una sopa hecha con trozos de pollo, patatas y una hierba aromatica llamada guasca, que le da su delicioso sabor. La sopa se suele servir con un trozo de mazorca de maiz y, como guarnicion, arroz, alcaparras, medio aguacate y una crema blanca espesa. A continuacion, se pueden añadir los ingredientes que se deseen a la sopa. "]
+    },
+    {"tag": "Sancocho",
+      "patterns": ["que es el sancocho?"],
+      "responses": ["Esta sopa puede hacerse con pescado, pollo, carne de vaca o cerdo. El más famoso es el sancocho de pollo, también llamado «Sancocho de gallina». En la sopa encontrarás maíz, patas de pollo, yuca, plátano, cilantro y patatas. Un plato muy completo, típico de un domingo familiar.\nAl lado tendrá arroz, aguacate y salsa de ají para condimentar la sopa y hacerla más interesante. "]
+    },
+    {"tag": "Lechona",
+      "patterns": ["que es la lechona?"],
+      "responses": ["La lechona es un plato de cerdo relleno de arroz, guisantes y especias, ¡asado en el horno durante mas de 10 horas!\n La piel que lo rodea debe estar crujiente, mientras que el interior debe estar finamente cortado y sabroso. Se sirve con papas al horno y una arepa pequeña."]
+    },
+    {"tag": "Arroz con pollo",
+      "patterns": ["que es el arroz con pollo?"],
+      "responses": [" Hay varias recetas y variaciones, pero el nucleo es el mismo: pechuga de pollo, arroz y especias y hierbas con pequeñas verduras. "]
+    },
+    {"tag": "Arroz con huevos",
+      "patterns": ["que es el arroz con huevos?"],
+      "responses": ["Aqui no se tiene mucho que decir es arroz con huevos que pueden ser fritos, revueltos, hervidos.\nPero este platillo es muy popular como desayuno colombiano"]
+    },
+    {"tag": "Tamal",
+      "patterns": ["que es el tamal?"],
+      "responses": ["Es un plato tipico a base de carne de cerdo o pollo que se mezcla con harina de maiz, arroz y verduras. Todo está envuelto en hojas de platano. ¡Un buen tamal puede ser delicioso! "]
+    },
+    {"tag": "Caldo de costilla",
+      "patterns": ["que es el caldo de costilla?"],
+      "responses": ["Es un caldo que se sirve con trozos de cordero, cilantro picado y patatas. Es un producto que quita la sed y calienta."]
+    },
+    {"tag": "Changua",
+      "patterns": ["que es la changua?"],
+      "responses": ["Es una sopa a base de leche, servida con una yema de huevo cocida, cilantro picado, cebolla y trozos de pan blando. Es una sopa llena de sabores, un plato original y bastante atipico."]
+    }
+  ]
+}
